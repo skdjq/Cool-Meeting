@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skdjq.mapper.MeetingRoomMapper">
+
+    <select id="getAllMr" resultType="com.skdjq.model.MeetingRoom">
+        select * from meeting.meetingroom
+    </select>
+
+    <select id="getMrById" resultType="com.skdjq.model.MeetingRoom">
+        select * from meeting.meetingroom where roomid=#{roomid}
+    </select>
+
+    <update id="updateroom" parameterType="com.skdjq.model.MeetingRoom">
+         update meetingroom set roomnum = #{roomnum},roomname=#{roomname},capacity=#{capacity},status=#{status},description=#{description} where roomid=#{roomid};
+    </update>
+
+    <insert id="doAddMr" parameterType="com.skdjq.model.MeetingRoom">
+        insert into meeting.meetingroom (roomnum,roomname,capacity,status,description) values (#{roomnum},#{roomname},#{capacity},#{status},#{description});
+    </insert>
+</mapper>
